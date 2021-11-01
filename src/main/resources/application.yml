@@ -1,10 +1,20 @@
 server:
   port: 9090
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9010/eureka
 spring:
+  application:
+    name: ApiGateway
   cloud:
     gateway:
       routes:
         - id: e-bank
-          uri: 'http://localhost:8080'
+          uri: lb://E-BANK
           predicates:
             - Path=/**
+
+
+
+
